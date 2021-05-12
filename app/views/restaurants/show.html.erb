@@ -17,3 +17,13 @@
     Category:
   <%= @restaurant.category %>
 </p>
+
+<!-- display review -->
+<% @restaurant.reviews.each do |review| %>
+  <p><%= review.content %></p>
+  <p><%= review.rating %></p>
+<% end %>
+
+<!-- link to leave a review -->
+
+<%= link_to 'Leave a Review', new_restaurant_review_path(@restaurant) %>

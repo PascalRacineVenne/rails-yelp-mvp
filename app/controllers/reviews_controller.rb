@@ -8,7 +8,12 @@ class ReviewsController < ApplicationController
     @review = Review.new(review_params)
     @restaurant = Restaurant.find(params[:restaurant_id])
     @review.restaurant = @restaurant
-    @review.save
+    if @review.save
+      redirect_to @restaurant, notice: 'Review was successfully created.'
+    else
+      render :new
+    end
+
   end
 
   private
